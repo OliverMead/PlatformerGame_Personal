@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Player/Run0.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Player/Run1.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Player/Run4.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Player/Jump0.png" type="Texture" id=9]
+[ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14, 28 )
+
+[node name="World" type="Node" index="0"]
+
+[node name="Player" type="KinematicBody2D" parent="." index="0"]
+
+position = Vector2( 320, 192 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="Player" index="0"]
+
+frames = SubResource( 1 )
+animation = "Run"
+frame = 4
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="1"]
+
+position = Vector2( 0, 4 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="TileMap" type="TileMap" parent="." index="1"]
+
+mode = 0
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 262156, 0, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 1, 0, 262161, 2, 0, 327692, 6, 0, 327693, 7, 0, 327694, 7, 0, 327695, 7, 0, 327696, 7, 0, 327697, 8, 0, 589825, 0, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 2, 0, 655361, 6, 0, 655362, 7, 0, 655363, 7, 0, 655364, 7, 0, 655365, 7, 0, 655366, 7, 0, 655367, 7, 0, 655368, 7, 0, 655369, 7, 0, 655370, 7, 0, 655371, 7, 0, 655372, 7, 0, 655373, 7, 0, 655374, 8, 0 )
+_sections_unfolded = [ "Cell", "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+
