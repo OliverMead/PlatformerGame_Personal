@@ -1,36 +1,37 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Player/Run0.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player/Run1.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Player/Run4.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Player/Jump0.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Player/Jump4.png" type="Texture" id=10]
-[ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=11]
+[ext_resource path="res://World.gd" type="Script" id=1]
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/Run0.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/Run1.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Player/Run4.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Player/Jump0.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Player/Jump4.png" type="Texture" id=11]
+[ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "Run",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "Jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "Fall",
 "speed": 5.0
@@ -42,7 +43,10 @@ custom_solver_bias = 0.0
 radius = 19.2668
 height = 20.0
 
-[node name="World" type="Node" index="0"]
+[node name="World" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Z Index" ]
 
 [node name="Player" type="KinematicBody2D" parent="." index="0"]
 
@@ -52,8 +56,11 @@ input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="AnimatedSprite" parent="Player" index="0"]
 
@@ -96,7 +103,7 @@ _sections_unfolded = [ "Limit" ]
 [node name="TileMap" type="TileMap" parent="." index="1"]
 
 mode = 0
-tile_set = ExtResource( 11 )
+tile_set = ExtResource( 12 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
