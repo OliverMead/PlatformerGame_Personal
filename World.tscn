@@ -1,37 +1,38 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
-[ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player/Run0.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/Run1.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Player/Run4.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Player/Jump0.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Player/Jump4.png" type="Texture" id=11]
-[ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=12]
+[ext_resource path="res://background.png" type="Texture" id=2]
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/Run0.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Player/Run1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Player/Run4.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Player/Jump0.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Player/Jump4.png" type="Texture" id=12]
+[ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "Run",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "Jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "Fall",
 "speed": 5.0
@@ -48,7 +49,38 @@ height = 20.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Z Index" ]
 
-[node name="Player" type="KinematicBody2D" parent="." index="0"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = false
+_sections_unfolded = [ "Scroll" ]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+
+position = Vector2( 320, 200 )
+motion_scale = Vector2( 1, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion", "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
+
+rotation = 1.5708
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 12288, 1536 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+
+[node name="Player" type="KinematicBody2D" parent="." index="1"]
 
 position = Vector2( 320, 192 )
 z_index = 1
@@ -56,7 +88,7 @@ input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 __meta__ = {
 "_edit_group_": true
@@ -100,10 +132,10 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Limit" ]
 
-[node name="TileMap" type="TileMap" parent="." index="1"]
+[node name="TileMap" type="TileMap" parent="." index="2"]
 
 mode = 0
-tile_set = ExtResource( 12 )
+tile_set = ExtResource( 13 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
