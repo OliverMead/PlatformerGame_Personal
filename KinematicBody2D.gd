@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const UP = Vector2(0,-1)
 const G = 30
-const SPEED = 350
+const SPEED = 400
 const JUMP_HEIGHT = 800
 
 onready var playerSprite = get_node("Sprite")
@@ -11,7 +11,7 @@ var motion = Vector2()
 
 enum playerDirections{ left, right }
 var playerDirection = right
-enum playerStates{ idle, walk, jump, fall }
+enum playerStates{ idle, run, jump, fall }
 var playerState = idle
 
 func _physics_process(delta):
@@ -33,16 +33,24 @@ func _physics_process(delta):
 		motion.y = -JUMP_HEIGHT
 	
 	if motion.y < 0:
+		#jumping
 		if playerSprite.animation != "Jump":
 			playerSprite.play("Jump")
+			playerState = jump
 	elif motion.y > 0 && not is_on_floor():
+		#falling
 		if playerSprite.animation != "Fall":
 			playerSprite.play("Fall")
+			playerState = fall
 	elif motion.x == 0:
+		#idle
 		if playerSprite.animation != "Idle":
 			playerSprite.play("Idle")
+			playerState = idle
 	else:
+		#running
 		playerSprite.play("Run")
+		playerState = run
 	
 	if playerDirection == left:
 		playerSprite.flip_h = true
