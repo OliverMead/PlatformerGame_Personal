@@ -17,6 +17,10 @@ boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.707031, 0.566868, 0.386658, 1 )
 config/icon="res://Sprites/Player/Idle0.png"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
 window/size/width=640
@@ -29,9 +33,16 @@ window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
+[editor]
+
+convert_text_resources_to_binary_on_export=true
+
 [rendering]
 
+quality/intended_usage/framebuffer_mode=1
 quality/intended_usage/framebuffer_allocation=0
 quality/2d/use_pixel_snap=true
+quality/shading/force_vertex_shading=true
+quality/subsurface_scattering/quality=0
 environment/default_clear_color=Color( 0, 0.882813, 1, 1 )
 environment/default_environment="res://default_env.tres"
