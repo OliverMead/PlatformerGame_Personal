@@ -33,5 +33,5 @@ window/stretch/aspect="expand"
 
 quality/intended_usage/framebuffer_allocation=0
 quality/2d/use_pixel_snap=true
-environment/default_clear_color=Color( 0, 1, 0.90625, 1 )
+environment/default_clear_color=Color( 0, 0.882813, 1, 1 )
 environment/default_environment="res://default_env.tres"
