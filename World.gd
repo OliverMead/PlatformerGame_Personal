@@ -4,5 +4,5 @@ func _ready():
     set_process(true)
 
 func _process(delta):
-   if Input.is_action_pressed("ui_cancel"):
+   if Input.is_action_pressed("ui_cancel") or Input.is_key_pressed(KEY_Q):
       get_tree().quit()

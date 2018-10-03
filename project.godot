@@ -17,10 +17,6 @@ boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.707031, 0.566868, 0.386658, 1 )
 config/icon="res://Sprites/Player/Idle0.png"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
 window/size/width=640

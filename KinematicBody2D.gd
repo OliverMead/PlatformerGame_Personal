@@ -4,6 +4,7 @@ const UP = Vector2(0,-1)
 const G = 30
 const SPEED = 400
 const JUMP_HEIGHT = 800
+const MAX_FALL_V = 70
 
 onready var playerSprite = get_node("Sprite")
 
@@ -42,6 +43,7 @@ func _physics_process(delta):
 		if playerSprite.animation != "Fall":
 			playerSprite.play("Fall")
 			playerState = fall
+			print(motion.y)
 	elif motion.x == 0:
 		#idle
 		if playerSprite.animation != "Idle":
