@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
@@ -12,7 +12,8 @@
 [ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/Player/Jump4.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/Player/Jump0.png" type="Texture" id=12]
-[ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=13]
+[ext_resource path="res://Sprites/Player/Jump1.png" type="Texture" id=13]
+[ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -25,7 +26,7 @@ animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "Run",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
@@ -35,6 +36,11 @@ animations = [ {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "Floating",
 "speed": 5.0
 } ]
 
@@ -140,7 +146,7 @@ autostart = false
 
 position = Vector2( -1, 0 )
 mode = 0
-tile_set = ExtResource( 13 )
+tile_set = ExtResource( 14 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
