@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 1.33688 )
+extents = Vector2( 16, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 
@@ -940,7 +940,7 @@ position = Vector2( 384, 0 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 256, 0, 32, 32 )
+region_rect = Rect2( 288, 64, 32, 32 )
 _sections_unfolded = [ "Offset", "Region" ]
 __meta__ = {
 "_edit_group_": true
@@ -958,7 +958,6 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="30/StaticBody2D" index="0"]
 
-visible = false
 position = Vector2( 16, 16 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]

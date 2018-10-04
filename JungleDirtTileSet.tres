@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 1.33688 )
+extents = Vector2( 16, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 
@@ -488,7 +488,7 @@ _sections_unfolded = [ "Resource" ]
 30/texture = ExtResource( 1 )
 30/tex_offset = Vector2( 0, 0 )
 30/modulate = Color( 1, 1, 1, 1 )
-30/region = Rect2( 256, 0, 32, 32 )
+30/region = Rect2( 288, 64, 32, 32 )
 30/is_autotile = false
 30/occluder_offset = Vector2( 0, 0 )
 30/navigation_offset = Vector2( 0, 0 )
