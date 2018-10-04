@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
@@ -13,7 +13,8 @@
 [ext_resource path="res://Sprites/Player/Jump4.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/Player/Jump0.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/Player/Jump1.png" type="Texture" id=13]
-[ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=14]
+[ext_resource path="res://Sprites/Player/Jump3.png" type="Texture" id=14]
+[ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -42,6 +43,11 @@ animations = [ {
 "loop": true,
 "name": "Floating",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "Dead",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -50,7 +56,7 @@ custom_solver_bias = 0.0
 radius = 17.8346
 height = 20.0
 
-[node name="World" type="Node2D" index="0"]
+[node name="World" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Z Index" ]
@@ -139,7 +145,7 @@ _sections_unfolded = [ "Limit", "Transform" ]
 
 position = Vector2( -1, 0 )
 mode = 0
-tile_set = ExtResource( 14 )
+tile_set = ExtResource( 15 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )

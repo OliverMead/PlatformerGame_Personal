@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="myPlatformer"
-run/main_scene="res://World.tscn"
+run/main_scene="res://MainMenu.tscn"
 boot_splash/image="res://Sprites/Player/Idle0.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.707031, 0.566868, 0.386658, 1 )

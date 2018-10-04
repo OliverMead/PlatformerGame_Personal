@@ -6,4 +6,4 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_pressed("ui_cancel") or Input.is_key_pressed(KEY_Q):
-		get_tree().quit()
+		get_tree().change_scene("res://MainMenu.tscn")
