@@ -3,51 +3,51 @@
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=3]
-[ext_resource path="res://Sprites/Player/Run0.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/Run1.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Player/Run4.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Player/Jump3.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Player/Jump4.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Player/Jump0.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Player/Jump1.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/Jump3.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Player/Jump4.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Player/Jump0.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Player/Jump1.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Player/Run0.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Player/Run1.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Player/Run4.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=14]
 [ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "Run",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "Dead",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "Fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ) ],
+"frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "Jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "Floating",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "Run",
+"speed": 15.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -56,13 +56,11 @@ custom_solver_bias = 0.0
 radius = 17.8346
 height = 20.0
 
-[node name="World" type="Node2D" index="0"]
-
+[node name="World" type="Node2D"]
 script = ExtResource( 1 )
 _sections_unfolded = [ "Z Index" ]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
-
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -76,47 +74,43 @@ scroll_limit_end = Vector2( 0, 0 )
 scroll_ignore_camera_zoom = false
 _sections_unfolded = [ "Scroll" ]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
-
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 320, 200 )
 motion_scale = Vector2( 0.25, 0.25 )
 motion_offset = Vector2( 0, 0 )
 motion_mirroring = Vector2( 0, 0 )
 _sections_unfolded = [ "Motion", "Transform" ]
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
-
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 rotation = 1.5708
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 12288, 12288 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="Player" type="KinematicBody2D" parent="." index="1"]
-
+[node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 320, 192 )
 z_index = 1
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
+motion/sync_to_physics = false
 script = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Sprite" type="AnimatedSprite" parent="Player" index="0"]
-
+[node name="Sprite" type="AnimatedSprite" parent="Player"]
 frames = SubResource( 1 )
 animation = "Idle"
 playing = true
+_sections_unfolded = [ "frames" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="1"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( 0, 3 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Camera2D" type="Camera2D" parent="Player" index="2"]
-
+[node name="Camera2D" type="Camera2D" parent="Player"]
 anchor_mode = 1
 rotating = false
 current = true
@@ -141,8 +135,7 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Limit", "Transform" ]
 
-[node name="TileMap" type="TileMap" parent="." index="2"]
-
+[node name="TileMap" type="TileMap" parent="."]
 position = Vector2( -1, 0 )
 mode = 0
 tile_set = ExtResource( 15 )
@@ -162,5 +155,4 @@ occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( -1769451, 12, 0, -1769450, 14, 0, -1703920, 12, 0, -1703919, 13, 0, -1703918, 13, 0, -1703917, 14, 0, -1703916, 1610612760, 0, -1703915, 16, 0, -1703914, 17, 0, -1638384, 15, 0, -1638383, 16, 0, -1638382, 16, 0, -1638381, 16, 0, -1638380, 1610612759, 0, -1638379, 4, 0, -1638378, 5, 0, -1572848, 25, 0, -1572847, 22, 0, -1572846, 4, 0, -1572845, 4, 0, -1572844, 23, 0, -1572843, 29, 0, -1572842, 27, 0, -1507311, 25, 0, -1507310, 22, 0, -1507309, 4, 0, -1507308, 19, 0, -1441783, 12, 0, -1441782, 13, 0, -1441781, 13, 0, -1441780, 13, 0, -1441779, 13, 0, -1441778, 13, 0, -1441777, 14, 0, -1441774, 25, 0, -1441773, 7, 0, -1441772, 21, 0, -1310721, 12, 0, -1376256, 13, 0, -1376255, 14, 0, -1376247, 15, 0, -1376246, 16, 0, -1376245, 16, 0, -1376244, 16, 0, -1376243, 16, 0, -1376242, 16, 0, -1376241, 17, 0, -1245196, 12, 0, -1245195, 14, 0, -1245185, 15, 0, -1310720, 16, 0, -1310719, 17, 0, -1310711, 25, 0, -1310710, 7, 0, -1310709, 7, 0, -1310708, 7, 0, -1310707, 7, 0, -1310706, 7, 0, -1310705, 24, 0, -1179660, 15, 0, -1179659, 17, 0, -1179649, 6, 0, -1245184, 7, 0, -1245183, 24, 0, -1114124, 6, 0, -1114123, 8, 0, -983039, 9, 0, -983038, 10, 0, -983037, 10, 0, -983036, 10, 0, -983035, 10, 0, -983034, 11, 0, -851980, 12, 0, -851979, 13, 0, -851978, 13, 0, -851977, 13, 0, -851976, 14, 0, -917503, 0, 0, -917502, 1, 0, -917501, 1, 0, -917500, 1, 0, -917499, 1, 0, -917498, 2, 0, -786444, 15, 0, -786443, 16, 0, -786442, 16, 0, -786441, 16, 0, -786440, 17, 0, -851967, 3, 0, -851966, 4, 0, -851965, 4, 0, -851964, 23, 0, -851963, 29, 0, -851962, 27, 0, -720908, 3, 0, -720907, 4, 0, -720906, 4, 0, -720905, 4, 0, -720904, 5, 0, -786431, 6, 0, -786430, 7, 0, -786429, 29, 0, -786428, 27, 0, -655372, 26, 0, -655371, 28, 0, -655370, 7, 0, -655369, 29, 0, -655368, 27, 0, -655348, 12, 0, -655347, 13, 0, -655346, 13, 0, -655345, 14, 0, -524290, 9, 0, -524289, 10, 0, -589824, 11, 0, -589812, 15, 0, -589811, 16, 0, -589810, 16, 0, -589809, 17, 0, -458768, 12, 0, -458767, 13, 0, -458766, 13, 0, -458765, 13, 0, -458764, 13, 0, -458763, 14, 0, -458754, 0, 0, -458753, 1, 0, -524288, 2, 0, -524276, 6, 0, -524275, 7, 0, -524274, 7, 0, -524273, 8, 0, -393232, 15, 0, -393231, 16, 0, -393230, 16, 0, -393229, 16, 0, -393228, 16, 0, -393227, 17, 0, -393218, 3, 0, -393217, 4, 0, -458752, 5, 0, -327696, 25, 0, -327695, 22, 0, -327694, 4, 0, -327693, 4, 0, -327692, 4, 0, -327691, 5, 0, -327682, 25, 0, -327681, 7, 0, -393216, 24, 0, -262159, 18, 0, -262158, 4, 0, -262157, 23, 0, -262156, 7, 0, -262155, 24, 0, -196623, 20, 0, -196622, 7, 0, -196621, 24, 0, -262125, 12, 0, -262124, 13, 0, -262123, 13, 0, -262122, 13, 0, -262121, 13, 0, -262120, 13, 0, -262119, 14, 0, -131078, 12, 0, -131077, 13, 0, -131076, 14, 0, -196589, 15, 0, -196588, 16, 0, -196587, 16, 0, -196586, 16, 0, -196585, 16, 0, -196584, 16, 0, -196583, 17, 0, -65542, 15, 0, -65541, 16, 0, -65540, 16, 0, -65539, 1610612764, 0, -65538, 1610612762, 0, -65537, 12, 0, -131072, 13, 0, -131071, 13, 0, -131070, 14, 0, -131053, 3, 0, -131052, 4, 0, -131051, 4, 0, -131050, 4, 0, -131049, 4, 0, -131048, 4, 0, -131047, 5, 0, -6, 6, 0, -5, 22, 0, -4, 4, 0, -3, -1073741820, 0, -2, -1073741801, 0, -1, 16, 0, -65536, 16, 0, -65535, 16, 0, -65534, 17, 0, -65517, 18, 0, -65516, 4, 0, -65515, 4, 0, -65514, 4, 0, -65513, 4, 0, -65512, 4, 0, -65511, 19, 0, 65531, 26, 0, 65532, 28, 0, 65533, 7, 0, 65534, 22, 0, 65535, 4, 0, 0, 23, 0, 1, 7, 0, 2, 8, 0, 19, 20, 0, 20, 22, 0, 21, 4, 0, 22, 4, 0, 23, 4, 0, 24, 23, 0, 25, 21, 0, 131070, 25, 0, 131071, 7, 0, 65536, 24, 0, 65549, 12, 0, 65550, 13, 0, 65551, 13, 0, 65552, 14, 0, 65556, 26, 0, 65557, 28, 0, 65558, 7, 0, 65559, 29, 0, 65560, 27, 0, 131085, 15, 0, 131086, 16, 0, 131087, 16, 0, 131088, 17, 0, 196609, 12, 0, 196610, 13, 0, 196611, 13, 0, 196612, 13, 0, 196613, 13, 0, 196614, 14, 0, 196621, 6, 0, 196622, 22, 0, 196623, 23, 0, 196624, 8, 0, 262145, 15, 0, 262146, 16, 0, 262147, 16, 0, 262148, 16, 0, 262149, 16, 0, 262150, 17, 0, 262158, 18, 0, 262159, 19, 0, 327681, 3, 0, 327682, 4, 0, 327683, 4, 0, 327684, 4, 0, 327685, 4, 0, 327686, 5, 0, 327694, 20, 0, 327695, 21, 0, 393217, 6, 0, 393218, 7, 0, 393219, 7, 0, 393220, 7, 0, 393221, 7, 0, 393222, 8, 0, 524289, 12, 0, 524290, 13, 0, 524291, 13, 0, 524292, 13, 0, 524293, 13, 0, 524294, 13, 0, 524295, 13, 0, 524296, 13, 0, 524297, 13, 0, 524298, 13, 0, 524299, 13, 0, 524300, 13, 0, 524301, 13, 0, 524302, 13, 0, 524303, 13, 0, 524304, 13, 0, 524305, 13, 0, 524306, 14, 0, 589825, 15, 0, 589826, 16, 0, 589827, 16, 0, 589828, 16, 0, 589829, 16, 0, 589830, 16, 0, 589831, 16, 0, 589832, 16, 0, 589833, 16, 0, 589834, 16, 0, 589835, 16, 0, 589836, 16, 0, 589837, 16, 0, 589838, 16, 0, 589839, 16, 0, 589840, 16, 0, 589841, 16, 0, 589842, 17, 0, 655361, 6, 0, 655362, 7, 0, 655363, 7, 0, 655364, 7, 0, 655365, 7, 0, 655366, 7, 0, 655367, 7, 0, 655368, 7, 0, 655369, 7, 0, 655370, 7, 0, 655371, 7, 0, 655372, 7, 0, 655373, 7, 0, 655374, 7, 0, 655375, 7, 0, 655376, 7, 0, 655377, 7, 0, 655378, 8, 0, 1114072, 30, 0, 1114073, 30, 0, 1114074, 30, 0, 1114075, 30, 0, 1114076, 30, 0, 1114077, 30, 0, 1114078, 30, 0, 1114079, 30, 0, 1114080, 30, 0, 1114081, 30, 0, 1114082, 30, 0, 1114083, 30, 0, 1114084, 30, 0, 1114085, 30, 0, 1114086, 30, 0, 1114087, 30, 0, 1114088, 30, 0, 1114089, 30, 0, 1114090, 30, 0, 1114091, 30, 0, 1114092, 30, 0, 1114093, 30, 0, 1114094, 30, 0, 1114095, 30, 0, 1114096, 30, 0, 1114097, 30, 0, 1114098, 30, 0, 1114099, 30, 0, 1114100, 30, 0, 1114101, 30, 0, 1114102, 30, 0, 1114103, 30, 0, 1114104, 30, 0, 1114105, 30, 0, 1114106, 30, 0, 1114107, 30, 0, 1114108, 30, 0, 1114109, 30, 0, 1114110, 30, 0, 1114111, 30, 0, 1048576, 30, 0, 1048577, 30, 0, 1048578, 30, 0, 1048579, 30, 0, 1048580, 30, 0, 1048581, 30, 0, 1048582, 30, 0, 1048583, 30, 0, 1048584, 30, 0, 1048585, 30, 0, 1048586, 30, 0, 1048587, 30, 0, 1048588, 30, 0, 1048589, 30, 0, 1048590, 30, 0, 1048591, 30, 0, 1048592, 30, 0, 1048593, 30, 0, 1048594, 30, 0, 1048595, 30, 0, 1048596, 30, 0, 1048597, 30, 0, 1048598, 30, 0, 1048599, 30, 0, 1048600, 30, 0, 1048601, 30, 0, 1048602, 30, 0, 1048603, 30, 0, 1048604, 30, 0, 1048605, 30, 0, 1048606, 30, 0, 1048607, 30, 0, 1048608, 30, 0, 1048609, 30, 0, 1048610, 30, 0, 1048611, 30, 0, 1048612, 30, 0, 1048613, 30, 0, 1048614, 30, 0, 1048615, 30, 0, 1048616, 30, 0, 1048617, 30, 0, 1048618, 30, 0, 1048619, 30, 0, 1048620, 30, 0, 1048621, 30, 0, 1048622, 30, 0, 1048623, 30, 0, 1048624, 30, 0, 1048625, 30, 0, 1048626, 30, 0, 1048627, 30, 0, 1048628, 30, 0, 1048629, 30, 0, 1048630, 30, 0, 1048631, 30, 0, 1048632, 30, 0, 1048633, 30, 0, 1048634, 30, 0, 1048635, 30, 0 )
 _sections_unfolded = [ "Cell" ]
-
 

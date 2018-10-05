@@ -15,6 +15,7 @@ enum playerDirections{ left, right }
 var playerDirection = right
 enum playerStates{ idle, run, jump, fall, floating}
 var playerState = idle
+var is_analogue_input = false
 
 func jump():
 	motion.y = - JUMP_HEIGHT
@@ -47,8 +48,12 @@ func handleMotion():
 			playerState = idle
 	else:
 		#running
-		playerSprite.play("Run")
-		playerState = run
+		if not is_analogue_input:
+			playerSprite.play("Run")
+			playerState = run
+		else:
+			playerSprite.play("Run")
+			playerSprite.frames.set_animation_speed("Run", 15 * (abs(motion.x) / 400))
 		
 	if playerDirection == left:
 		playerSprite.flip_h = true
@@ -61,9 +66,19 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		motion.x = SPEED
 		playerDirection = right
+		is_analogue_input = false
 	elif Input.is_action_pressed("ui_left"):
 		motion.x = -SPEED
 		playerDirection = left
+		is_analogue_input = false
+	elif Input.is_action_pressed("ls_right"):
+		motion.x = SPEED * Input.get_action_strength("ls_right")
+		playerDirection = right
+		is_analogue_input = true
+	elif Input.is_action_pressed("ls_left"):
+		motion.x = -SPEED * Input.get_action_strength("ls_left")
+		playerDirection = left
+		is_analogue_input = true
 	else:
 		motion.x = 0
 	
