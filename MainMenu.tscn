@@ -11,7 +11,7 @@
 [sub_resource type="ShortCut" id=1]
 
 
-[node name="MainMenu" type="Node" index="0"]
+[node name="MainMenu" type="Node"]
 
 script = ExtResource( 1 )
 
