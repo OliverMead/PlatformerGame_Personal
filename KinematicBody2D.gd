@@ -51,7 +51,7 @@ func handleMotion():
 		if not is_analogue_input:
 			playerSprite.frames.set_animation_speed("Run", 15)
 		else:
-			playerSprite.frames.set_animation_speed("Run", round(15 * abs(motion.x) / SPEED))
+			playerSprite.frames.set_animation_speed("Run", round(15 * (abs(motion.x) / SPEED)))
 		playerSprite.play("Run")
 		playerState = run
 		
@@ -82,8 +82,8 @@ func _physics_process(delta):
 	else:
 		motion.x = 0
 	
-	#if Input.is_action_pressed("ui_up"):
-	#	motion.y = -SPEED
+	if Input.is_action_pressed("ui_up"):
+		motion.y = -SPEED
 	
 	if Input.is_action_pressed("ui_jump") and is_on_floor():
 		jump()
