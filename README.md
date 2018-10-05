@@ -1,4 +1,4 @@
 # myPlatformer
 Please ignore this I'm just learning how to use GoDot
 
-also this might be my BTEC work
+also this is definitely my BTEC work
