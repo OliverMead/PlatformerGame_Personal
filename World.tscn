@@ -3,8 +3,8 @@
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=3]
-[ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/Jump3.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Player/Jump3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Player/Jump4.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Player/Jump0.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/Player/Jump1.png" type="Texture" id=8]
@@ -21,12 +21,12 @@
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Dead",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "Dead",
+"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],

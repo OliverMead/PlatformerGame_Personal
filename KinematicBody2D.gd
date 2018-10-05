@@ -49,11 +49,11 @@ func handleMotion():
 	else:
 		#running
 		if not is_analogue_input:
-			playerSprite.play("Run")
-			playerState = run
+			playerSprite.frames.set_animation_speed("Run", 15)
 		else:
-			playerSprite.play("Run")
-			playerSprite.frames.set_animation_speed("Run", 15 * (abs(motion.x) / 400))
+			playerSprite.frames.set_animation_speed("Run", round(15 * abs(motion.x) / SPEED))
+		playerSprite.play("Run")
+		playerState = run
 		
 	if playerDirection == left:
 		playerSprite.flip_h = true
