@@ -1,6 +1,6 @@
 extends Node2D
 
-const starNum = 1
+const starNum = 14
 
 func _ready():
 	set_process(true)
@@ -9,4 +9,9 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("ui_cancel") or Input.is_key_pressed(KEY_Q):
 		get_tree().change_scene("res://MainMenu.tscn")
-
+	if $Player.starCount == starNum:
+		# you won
+		pass
+	if $Player.lives == 0:
+		# you died
+		pass

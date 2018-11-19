@@ -11,6 +11,8 @@ func hit(object):
 		print("HIT STAR")
 		object.starCount += 1
 		print(object.starCount)
+		visible = false
+		$Area2D/CollisionShape2D.disabled = true
 	else:
 		pass
 	pass
