@@ -6,15 +6,20 @@ const SPEED = 400
 const JUMP_HEIGHT = 800
 const MAX_FALL_V = 70
 const FLOAT_RANGE = 100
+const STAR_TOTAL = 14
+
+var starCount = 0
+var lives = 3
 
 onready var playerSprite = get_node("Sprite")
+onready var world = self.get_parent()
 
 var motion = Vector2()
 
 enum playerDirections{ left, right }
-var playerDirection = right
-enum playerStates{ idle, run, jump, fall, floating}
-var playerState = idle
+var playerDirection = playerDirections.right
+enum playerStates{ idle, run, jump, fall, floating }
+var playerState = playerStates.idle
 var is_analogue_input = false
 
 func jump():
@@ -28,24 +33,24 @@ func handleMotion():
 		#floating
 		if playerSprite.animation != "Floating":
 			playerSprite.play("Floating")
-			playerState = floating
+			playerState = playerStates.floating
 	elif motion.y < 0:
 		#jumping
 		if playerSprite.animation != "Jump":
 			playerSprite.play("Jump")
-			playerState = jump
+			playerState = playerStates.jump
 	elif motion.y > 0 && not is_on_floor():
 		#falling
 		#if playerSprite.animation != "Fall" && floatCounter > MAX_FLOAT_COUNT:
 		if playerSprite.animation != "Fall":
 			playerSprite.play("Fall")
-			playerState = fall
+			playerState = playerStates.fall
 			#print(motion.y)
 	elif motion.x == 0:
 		#idle
 		if playerSprite.animation != "Idle":
 			playerSprite.play("Idle")
-			playerState = idle
+			playerState = playerStates.idle
 	else:
 		#running
 		if not is_analogue_input:
@@ -53,10 +58,10 @@ func handleMotion():
 		else:
 			playerSprite.frames.set_animation_speed("Run", round(15 * (abs(motion.x) / SPEED)))
 		playerSprite.play("Run")
-		playerState = run
+		playerState = playerStates.run
 	
 	#set direction
-	if playerDirection == left:
+	if playerDirection == playerDirections.left:
 		playerSprite.flip_h = true
 	else:
 		playerSprite.flip_h = false
@@ -68,30 +73,30 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		# set to move right with button
 		motion.x = SPEED
-		playerDirection = right
+		playerDirection = playerDirections.right
 		is_analogue_input = false
 	elif Input.is_action_pressed("ui_left"):
 		# set to move left with button
 		motion.x = -SPEED
-		playerDirection = left
+		playerDirection = playerDirections.left
 		is_analogue_input = false
 	elif Input.is_action_pressed("ls_right"):
 		# set to move right with stick
 		motion.x = SPEED * Input.get_action_strength("ls_right")
-		playerDirection = right
+		playerDirection = playerDirections.right
 		is_analogue_input = true
 	elif Input.is_action_pressed("ls_left"):
 		# set to move left with stick
 		motion.x = -SPEED * Input.get_action_strength("ls_left")
-		playerDirection = left
+		playerDirection = playerDirections.left
 		is_analogue_input = true
 	else:
 		# not moving left or right
 		motion.x = 0
 	
-	if Input.is_action_pressed("ui_up"):
-		# fly mode
-		motion.y = -SPEED
+	#if Input.is_action_pressed("ui_up"):
+	#	# fly mode
+	#	motion.y = -SPEED
 	
 	if Input.is_action_pressed("ui_jump") and is_on_floor():
 		jump()
@@ -99,3 +104,5 @@ func _physics_process(delta):
 	# process the motion of the player
 	handleMotion()
 	motion = move_and_slide(motion, UP)
+
+#func _on_colliion_with_body(body):

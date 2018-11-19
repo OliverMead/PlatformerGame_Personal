@@ -18,9 +18,12 @@ _global_script_class_icons={
 config/name="myPlatformer"
 run/main_scene="res://MainMenu.tscn"
 boot_splash/image="res://Sprites/Player/Idle0.png"
-boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.707031, 0.566868, 0.386658, 1 )
 config/icon="res://Sprites/Player/Idle0.png"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [display]
 
@@ -104,6 +107,16 @@ ls_left={
 ls_right={
 "deadzone": 0.5,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
+ ]
+}
+action_b={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+action_a={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
 
