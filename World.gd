@@ -1,5 +1,6 @@
 extends Node2D
 
+const starNum = 1
 
 func _ready():
 	set_process(true)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
@@ -15,8 +15,8 @@
 [ext_resource path="res://Sprites/Player/Jump4.png" type="Texture" id=13]
 [ext_resource path="res://Sprites/Player/Jump3.png" type="Texture" id=14]
 [ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=15]
-[ext_resource path="res://Sprites/Star/star.png" type="Texture" id=16]
-[ext_resource path="res://Sprite.gd" type="Script" id=17]
+[ext_resource path="res://Star.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Spike.tscn" type="PackedScene" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -55,10 +55,6 @@ animations = [ {
 [sub_resource type="CapsuleShape2D" id=2]
 
 radius = 17.8346
-
-[sub_resource type="CircleShape2D" id=4]
-
-radius = 18.0
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -140,16 +136,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 meta_underlined = false
 text = "50"
 
-[node name="Star" type="Sprite" parent="."]
-position = Vector2( 576, 256 )
-scale = Vector2( 1, 1 )
-texture = ExtResource( 16 )
-script = ExtResource( 17 )
+[node name="Star" parent="." instance=ExtResource( 16 )]
 
-[node name="Area2D" type="Area2D" parent="Star"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Star/Area2D"]
-position = Vector2( 0, 1 )
-scale = Vector2( 1, 1 )
-shape = SubResource( 4 )
+[node name="Spike" parent="." instance=ExtResource( 17 )]
 
