@@ -1,6 +1,7 @@
 [gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Sprites/Tiles/JungleDirtTileSet.png" type="Texture" id=1]
+[ext_resource path="res://Boundary.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -69,10 +70,6 @@ points = PoolVector2Array( 16, -16, 16, 16, -16, 0, -16, -16 )
 [sub_resource type="ConvexPolygonShape2D" id=17]
 
 points = PoolVector2Array( 16, -16, 16, 0, -16, 16, -16, -16 )
-
-[sub_resource type="RectangleShape2D" id=18]
-
-extents = Vector2( 16, 16 )
 
 [node name="JungleDirtTiles" type="Node"]
 
@@ -556,20 +553,5 @@ __meta__ = {
 position = Vector2( 16, 16 )
 shape = SubResource( 17 )
 
-[node name="30" type="Sprite" parent="."]
-editor/display_folded = true
-position = Vector2( 384, -0.9706 )
-texture = ExtResource( 1 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 256, 0, 32, 32 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="30"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="30/StaticBody2D"]
-position = Vector2( 16, 16 )
-shape = SubResource( 18 )
+[node name="30" parent="." instance=ExtResource( 2 )]
 

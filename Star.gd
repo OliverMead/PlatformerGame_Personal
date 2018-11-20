@@ -1,6 +1,6 @@
 extends Sprite
 
-onready var world = get_parent()
+#onready var world = get_parent()
 
 func _ready():
 	$Area2D.connect("body_entered", self, "hit")

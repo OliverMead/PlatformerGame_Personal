@@ -23,6 +23,7 @@ func _process(delta):
 		# you died
 		display.add_child(load("res://Loss.tscn").instance())
 		$Player.disabled = true
+		$CanvasLayer/ColorRect3/RichTextLabel.disabled = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		#$CanvasLayer/Loss/RichTextLabel.color = 
 		#$CanvasLayer/Loss/RichTextLabel.text = "YOU DIED"
