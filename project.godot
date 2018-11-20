@@ -122,13 +122,14 @@ action_a={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 quality/2d/use_pixel_snap=true
 quality/shading/force_vertex_shading=true
-quality/subsurface_scattering/quality=0
-quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0, 0.882813, 1, 1 )
 quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"
+quality/subsurface_scattering/quality=0
+quality/voxel_cone_tracing/high_quality=false
 quality/intended_usage/framebuffer_mode=1
