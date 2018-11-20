@@ -12,7 +12,8 @@ func hit(object):
 		object.starCount += 1
 		#print(object.starCount)
 		visible = false
-		$Area2D/CollisionShape2D.disabled = true
+		#$Area2D/CollisionShape2D.call_deferred("set_disabled", true)
+		queue_free()
 	else:
 		pass
 	pass
