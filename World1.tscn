@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World1.gd" type="Script" id=1]
-[ext_resource path="res://background.png" type="Texture" id=2]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://JungleDirtTiles.tres" type="TileSet" id=4]
 [ext_resource path="res://HUD.gd" type="Script" id=5]
@@ -14,23 +14,7 @@
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_ignore_camera_zoom = true
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 320, 200 )
-motion_scale = Vector2( 0.25, 0.25 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -6.78171, -8.13803 )
-rotation = 1.5708
-z_index = -1
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 12288, 12288 )
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
@@ -87,6 +71,17 @@ grow_horizontal = 0
 custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 text = "420"
 script = ExtResource( 6 )
+
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer"]
+margin_right = 55.0
+margin_bottom = 18.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect4"]
+margin_right = 60.0
+margin_bottom = 40.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+text = "Level 1"
 
 [node name="Star" parent="." instance=ExtResource( 7 )]
 

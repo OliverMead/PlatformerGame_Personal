@@ -10,8 +10,8 @@ func _ready():
 	pass
 
 func _pressed():
-	get_tree().change_scene("res://World1.tscn")
+	get_tree().change_scene("res://World2.tscn")
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
-#	pass
+#	pas

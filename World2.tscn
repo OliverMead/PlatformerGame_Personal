@@ -1,0 +1,145 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://World2.gd" type="Script" id=1]
+[ext_resource path="res://HUD.gd" type="Script" id=2]
+[ext_resource path="res://Timer.gd" type="Script" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://JungleDirtTiles.tres" type="TileSet" id=5]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Boundary.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Star.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Spike.tscn" type="PackedScene" id=9]
+
+[node name="World" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_top = 346.0
+margin_right = 66.0
+margin_bottom = 360.0
+color = Color( 1, 0.796078, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect"]
+margin_right = 66.0
+margin_bottom = 16.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+meta_underlined = false
+text = "50"
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+margin_left = 592.0
+margin_top = 346.0
+margin_right = 640.0
+margin_bottom = 360.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect2"]
+margin_left = 16.0
+margin_right = 48.0
+margin_bottom = 40.0
+text = "3 "
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
+margin_left = 544.0
+margin_right = 640.0
+margin_bottom = 32.0
+color = Color( 0, 0.584314, 1, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect3"]
+anchor_right = 1.0
+margin_bottom = 32.0
+grow_horizontal = 0
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "420"
+script = ExtResource( 3 )
+
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer"]
+margin_right = 55.0
+margin_bottom = 18.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect4"]
+margin_right = 60.0
+margin_bottom = 40.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+text = "Level 2"
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -917506, 9, 0, -917505, 11, 0, -851971, 1610612757, 0, -851970, 1, 0, -851969, 2, 0, -917498, 12, 0, -917497, 13, 0, -917496, 13, 0, -917495, 13, 0, -917494, 13, 0, -917493, 13, 0, -917492, 13, 0, -917491, 14, 0, -786435, 1610612755, 0, -786434, 4, 0, -786433, 5, 0, -851962, 15, 0, -851961, 16, 0, -851960, 16, 0, -851959, 16, 0, -851958, 16, 0, -851957, 16, 0, -851956, 16, 0, -851955, 17, 0, -720900, 1610612757, 0, -720899, 1610612759, 0, -720898, 4, 0, -720897, 5, 0, -786426, 6, 0, -786425, 7, 0, -786424, 7, 0, -786423, 7, 0, -786422, 7, 0, -786421, 7, 0, -786420, 7, 0, -786419, 8, 0, -655366, 9, 0, -655365, 11, 0, -655364, 1610612755, 0, -655363, 4, 0, -655362, 4, 0, -655361, 5, 0, -589831, 1610612760, 0, -589830, 1, 0, -589829, 1, 0, -589828, -1610612714, 0, -589827, 4, 0, -589826, 4, 0, -589825, 5, 0, -524296, 1610612760, 0, -524295, 1610612759, 0, -524294, 1073741828, 0, -524293, 1610612740, 0, -524292, 1610612740, 0, -524291, 4, 0, -524290, 4, 0, -524289, 5, 0, -458760, 25, 0, -458759, 7, 0, -458758, 7, 0, -458757, 7, 0, -458756, 7, 0, -458755, 7, 0, -458754, 7, 0, -458753, 8, 0, -196627, 12, 0, -196626, 13, 0, -196625, 13, 0, -196624, 13, 0, -196623, 13, 0, -196622, 13, 0, -196621, 13, 0, -196620, 14, 0, -262140, 9, 0, -262139, 11, 0, -262135, 9, 0, -262134, 11, 0, -131091, 15, 0, -131090, 16, 0, -131089, 16, 0, -131088, 16, 0, -131087, 16, 0, -131086, 16, 0, -131085, 16, 0, -131084, 17, 0, -196604, 0, 0, -196603, 2, 0, -196599, 0, 0, -196598, 2, 0, -65555, 6, 0, -65554, 7, 0, -65553, 7, 0, -65552, 7, 0, -65551, 7, 0, -65550, 7, 0, -65549, 7, 0, -65548, 8, 0, -131068, 3, 0, -131067, -1073741801, 0, -131066, -1073741800, 0, -131065, 10, 0, -131064, -1610612711, 0, -131063, -1610612714, 0, -131062, 5, 0, -65532, 3, 0, -65531, 4, 0, -65530, -1073741801, 0, -65529, 1, 0, -65528, -1610612714, 0, -65527, 4, 0, -65526, 5, 0, 4, 26, 0, 5, 28, 0, 6, 7, 0, 7, 7, 0, 8, 7, 0, 9, 29, 0, 10, 27, 0, 65550, 12, 0, 65551, 13, 0, 65552, 13, 0, 65553, 14, 0, 196597, 12, 0, 196598, 13, 0, 196599, 13, 0, 196600, 13, 0, 196601, 13, 0, 196602, 13, 0, 196603, 13, 0, 196604, 13, 0, 196605, 14, 0, 131086, 15, 0, 131087, 16, 0, 131088, 16, 0, 131089, 17, 0, 262133, 15, 0, 262134, 16, 0, 262135, 16, 0, 262136, 16, 0, 262137, 16, 0, 262138, 16, 0, 262139, 16, 0, 262140, 16, 0, 262141, 17, 0, 196622, 25, 0, 196623, 22, 0, 196624, 23, 0, 196625, 24, 0, 327669, 6, 0, 327670, 7, 0, 327671, 7, 0, 327672, 7, 0, 327673, 7, 0, 327674, 7, 0, 327675, 7, 0, 327676, 7, 0, 327677, 8, 0, 262159, 18, 0, 262160, 19, 0, 327695, 20, 0, 327696, 21, 0, 458755, 12, 0, 458756, 13, 0, 458757, 13, 0, 458758, 13, 0, 458759, 13, 0, 458760, 13, 0, 458761, 13, 0, 458762, 13, 0, 458763, 13, 0, 458764, 13, 0, 458765, 13, 0, 458766, 13, 0, 458767, 14, 0, 524291, 15, 0, 524292, 16, 0, 524293, 16, 0, 524294, 16, 0, 524295, 16, 0, 524296, 16, 0, 524297, 16, 0, 524298, 16, 0, 524299, 16, 0, 524300, 16, 0, 524301, 16, 0, 524302, 16, 0, 524303, 17, 0, 589827, 6, 0, 589828, 7, 0, 589829, 7, 0, 589830, 7, 0, 589831, 7, 0, 589832, 7, 0, 589833, 7, 0, 589834, 7, 0, 589835, 7, 0, 589836, 7, 0, 589837, 7, 0, 589838, 7, 0, 589839, 8, 0 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
+
+[node name="1" parent="." instance=ExtResource( 7 )]
+position = Vector2( -2530.64, 559.37 )
+scale = Vector2( 195.805, 0.563217 )
+
+[node name="Star" parent="." instance=ExtResource( 8 )]
+position = Vector2( 469.189, 215.531 )
+
+[node name="Star2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 106.96, 217.522 )
+
+[node name="Star3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 518.282, 25.129 )
+
+[node name="Star4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 224.386, -72.3941 )
+
+[node name="Star5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 304.66, -134.756 )
+
+[node name="Star6" parent="." instance=ExtResource( 8 )]
+position = Vector2( 145.439, -137.41 )
+
+[node name="Star7" parent="." instance=ExtResource( 8 )]
+position = Vector2( -103.345, 55.6464 )
+
+[node name="Star8" parent="." instance=ExtResource( 8 )]
+position = Vector2( -326.255, 56.3098 )
+
+[node name="Star9" parent="." instance=ExtResource( 8 )]
+position = Vector2( -594.277, -134.092 )
+
+[node name="Star10" parent="." instance=ExtResource( 8 )]
+position = Vector2( -166.149, -362.53 )
+
+[node name="Star11" parent="." instance=ExtResource( 8 )]
+position = Vector2( -47.5663, -490.353 )
+
+[node name="Star12" parent="." instance=ExtResource( 8 )]
+position = Vector2( 404.176, -463.146 )
+
+[node name="Spike" parent="." instance=ExtResource( 9 )]
+position = Vector2( 380.099, 218.106 )
+
+[node name="Spike2" parent="." instance=ExtResource( 9 )]
+position = Vector2( -223.39, 60.4643 )
+
+[node name="Spike3" parent="." instance=ExtResource( 9 )]
+position = Vector2( -458.126, -131.212 )
+
+[node name="Spike5" parent="." instance=ExtResource( 9 )]
+position = Vector2( 247.565, -450.978 )
+
+[node name="Spike6" parent="." instance=ExtResource( 9 )]
+position = Vector2( 383.557, -79.7551 )
+rotation = 1.5708
+
+[node name="Spike7" parent="." instance=ExtResource( 9 )]
+position = Vector2( 346.802, 40.8003 )
+rotation = 2.79253
+
+[node name="Spike4" parent="." instance=ExtResource( 9 )]
+position = Vector2( -252.299, -207.662 )
+rotation = -2.35619
+

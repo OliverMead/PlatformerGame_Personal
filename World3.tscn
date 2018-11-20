@@ -1,0 +1,165 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://World3.gd" type="Script" id=1]
+[ext_resource path="res://JungleDirtTiles.tres" type="TileSet" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HUD.gd" type="Script" id=5]
+[ext_resource path="res://Timer.gd" type="Script" id=6]
+[ext_resource path="res://Boundary.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Star.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Spike.tscn" type="PackedScene" id=9]
+
+[node name="World" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -1048552, 12, 0, -1048551, 14, 0, -983017, 1073741849, 0, -983016, 16, 0, -983015, 17, 0, -917484, 12, 0, -917483, 14, 0, -917482, 1073741849, 0, -917481, 1073741846, 0, -917480, 7, 0, -917479, 24, 0, -851967, 11, 0, -851953, 12, 0, -851952, 13, 0, -851951, 14, 0, -851950, 1073741850, 0, -851949, 1073741852, 0, -851948, 16, 0, -851947, 16, 0, -851946, 1073741846, 0, -851945, 24, 0, -720897, 10, 0, -786432, 1073741849, 0, -786431, 2, 0, -786417, 15, 0, -786416, 16, 0, -786415, 16, 0, -786414, 1073741846, 0, -786413, 4, 0, -786412, 23, 0, -786411, 7, 0, -786410, 24, 0, -655362, 1073741849, 0, -655361, 1, 0, -720896, 1073741846, 0, -720895, 24, 0, -720892, 12, 0, -720891, 13, 0, -720890, 13, 0, -720889, 13, 0, -720888, 13, 0, -720887, 14, 0, -720881, 25, 0, -720880, 7, 0, -720879, 7, 0, -720878, 7, 0, -720877, 29, 0, -720876, 27, 0, -589826, 25, 0, -589825, 7, 0, -655360, 24, 0, -655356, 15, 0, -655355, 16, 0, -655354, 16, 0, -655353, 16, 0, -655352, 16, 0, -655351, 17, 0, -589820, 3, 0, -589819, 4, 0, -589818, 23, 0, -589817, 22, 0, -589816, 4, 0, -589815, 5, 0, -458754, 12, 0, -458753, 14, 0, -524284, 25, 0, -524283, 7, 0, -524282, 24, 0, -524281, 25, 0, -524280, 7, 0, -524279, 24, 0, -393221, 12, 0, -393220, 14, 0, -393219, 1073741849, 0, -393218, 536870928, 0, -393217, 536870927, 0, -327685, 536870929, 0, -327684, 536870928, 0, -327683, 1610612759, 0, -327682, 23, 0, -327681, 24, 0, -262149, 25, 0, -262148, 7, 0, -262147, 7, 0, -262146, 24, 0, -196599, 536870923, 0, -196598, 536870922, 0, -196597, 536870921, 0, -65538, 536870926, 0, -65537, 536870925, 0, -131072, 536870925, 0, -131071, 536870925, 0, -131070, 536870925, 0, -131069, 536870924, 0, -131063, 536870914, 0, -131062, 536870913, 0, -131061, 536870912, 0, -2, 536870929, 0, -1, 536870928, 0, -65536, 536870928, 0, -65535, 536870928, 0, -65534, 536870928, 0, -65533, 536870927, 0, -65527, 536870917, 0, -65526, 536870916, 0, -65525, 536870915, 0, 65534, 536870920, 0, 65535, 536870919, 0, 0, 536870919, 0, 1, 536870919, 0, 2, 536870919, 0, 3, 536870918, 0, 9, 536870936, 0, 10, 536870919, 0, 11, 536870937, 0, 131087, 536870926, 0, 131088, 536870925, 0, 131089, 536870925, 0, 131090, 536870925, 0, 131091, 536870925, 0, 131092, 536870925, 0, 131093, 536870925, 0, 131094, 536870924, 0, 196623, 536870929, 0, 196624, 536870928, 0, 196625, 536870928, 0, 196626, 536870928, 0, 196627, 536870928, 0, 196628, 536870928, 0, 196629, 536870928, 0, 196630, 536870927, 0, 262159, 536870920, 0, 262160, 536870919, 0, 262161, 536870919, 0, 262162, 536870919, 0, 262163, 536870919, 0, 262164, 536870919, 0, 262165, 536870919, 0, 262166, 536870918, 0, 458756, 536870926, 0, 458757, 536870925, 0, 458758, 536870925, 0, 458759, 536870925, 0, 458760, 536870925, 0, 458761, 536870925, 0, 458762, 536870925, 0, 458763, 536870925, 0, 458764, 536870925, 0, 458765, 536870925, 0, 458766, 536870925, 0, 458767, 536870924, 0, 524292, 536870929, 0, 524293, 536870928, 0, 524294, 536870928, 0, 524295, 536870928, 0, 524296, 536870928, 0, 524297, 536870928, 0, 524298, 536870928, 0, 524299, 536870928, 0, 524300, 536870928, 0, 524301, 536870928, 0, 524302, 536870928, 0, 524303, 536870927, 0, 589828, 536870920, 0, 589829, 536870919, 0, 589830, 536870919, 0, 589831, 536870919, 0, 589832, 536870919, 0, 589833, 536870919, 0, 589834, 536870919, 0, 589835, 536870919, 0, 589836, 536870919, 0, 589837, 536870919, 0, 589838, 536870919, 0, 589839, 536870918, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 4 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_top = 346.0
+margin_right = 66.0
+margin_bottom = 360.0
+color = Color( 1, 0.796078, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect"]
+margin_right = 66.0
+margin_bottom = 16.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+meta_underlined = false
+text = "50"
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+margin_left = 592.0
+margin_top = 346.0
+margin_right = 640.0
+margin_bottom = 360.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect2"]
+margin_left = 16.0
+margin_right = 48.0
+margin_bottom = 40.0
+text = "3 "
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
+margin_left = 544.0
+margin_right = 640.0
+margin_bottom = 32.0
+color = Color( 0, 0.584314, 1, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect3"]
+anchor_right = 1.0
+margin_bottom = 32.0
+grow_horizontal = 0
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "420"
+script = ExtResource( 6 )
+
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer"]
+margin_right = 55.0
+margin_bottom = 18.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect4"]
+margin_right = 60.0
+margin_bottom = 40.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+text = "Level 3"
+
+[node name="1" parent="." instance=ExtResource( 7 )]
+position = Vector2( -2798.83, 691.8 )
+scale = Vector2( 191.64, 1 )
+
+[node name="Star" parent="." instance=ExtResource( 8 )]
+position = Vector2( 404.982, 207.033 )
+
+[node name="Star2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 607.427, 52.0934 )
+
+[node name="Star3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 324.588, -110.886 )
+
+[node name="Star4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 85.6011, -78.7284 )
+
+[node name="Star5" parent="." instance=ExtResource( 8 )]
+position = Vector2( -45.2207, -81.6518 )
+
+[node name="Star6" parent="." instance=ExtResource( 8 )]
+position = Vector2( -149.732, -234.399 )
+
+[node name="Star7" parent="." instance=ExtResource( 8 )]
+position = Vector2( 31.5183, -428.805 )
+
+[node name="Star8" parent="." instance=ExtResource( 8 )]
+position = Vector2( 157.955, -368.144 )
+
+[node name="Star9" parent="." instance=ExtResource( 8 )]
+position = Vector2( 258.694, -370.116 )
+
+[node name="Star10" parent="." instance=ExtResource( 8 )]
+position = Vector2( 785.362, -528.157 )
+
+[node name="Spike" parent="." instance=ExtResource( 9 )]
+position = Vector2( 474.968, 222.39 )
+
+[node name="Spike7" parent="." instance=ExtResource( 9 )]
+position = Vector2( 399.943, 29.4671 )
+rotation = 2.35619
+
+[node name="Spike8" parent="." instance=ExtResource( 9 )]
+position = Vector2( -17.0254, -130.55 )
+rotation = 2.35619
+
+[node name="Spike9" parent="." instance=ExtResource( 9 )]
+position = Vector2( 82.9854, -327.494 )
+rotation = 2.35619
+
+[node name="Spike10" parent="." instance=ExtResource( 9 )]
+position = Vector2( 337.628, -229.022 )
+rotation = 2.35619
+
+[node name="Spike11" parent="." instance=ExtResource( 9 )]
+position = Vector2( 486.106, -302.876 )
+rotation = -2.35619
+
+[node name="Spike12" parent="." instance=ExtResource( 9 )]
+position = Vector2( 135.299, -205.174 )
+rotation = -2.35619
+
+[node name="Spike13" parent="." instance=ExtResource( 9 )]
+position = Vector2( -60.8762, -272.873 )
+rotation = -2.35619
+
+[node name="Spike14" parent="." instance=ExtResource( 9 )]
+position = Vector2( 579.193, -419.812 )
+rotation = -0.349066
+
+[node name="Spike2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 695.904, 60.4315 )
+
+[node name="Spike3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 25.267, -67.1631 )
+
+[node name="Spike4" parent="." instance=ExtResource( 9 )]
+position = Vector2( -29.8539, -382.067 )
+
+[node name="Spike5" parent="." instance=ExtResource( 9 )]
+position = Vector2( 206.451, -354.506 )
+
+[node name="Spike6" parent="." instance=ExtResource( 9 )]
+position = Vector2( 659.157, -450.457 )
+
