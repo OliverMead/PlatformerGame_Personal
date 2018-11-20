@@ -8,9 +8,9 @@ func _ready():
 
 func hit(object):
 	if object.get("starCount") != null:
-		print("HIT STAR")
+		#print("HIT STAR")
 		object.starCount += 1
-		print(object.starCount)
+		#print(object.starCount)
 		visible = false
 		$Area2D/CollisionShape2D.disabled = true
 	else:

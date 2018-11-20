@@ -8,9 +8,9 @@ func _ready():
 
 func hit(object):
 	if object.get("lives") != null:
-		print("HIT SPIKE")
+		#print("HIT SPIKE")
 		object.lives -= 1
-		print(object.lives)
+		#print(object.lives)
 	else:
 		pass
 	pass

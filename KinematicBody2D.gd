@@ -10,6 +10,7 @@ const STAR_TOTAL = 14
 
 var starCount = 0
 var lives = 3
+var disabled = false
 
 onready var playerSprite = get_node("Sprite")
 onready var world = self.get_parent()
@@ -67,42 +68,45 @@ func handleMotion():
 		playerSprite.flip_h = false
 
 func _physics_process(delta):
-	# apply gravity
-	motion.y += G
-			
-	if Input.is_action_pressed("ui_right"):
-		# set to move right with button
-		motion.x = SPEED
-		playerDirection = playerDirections.right
-		is_analogue_input = false
-	elif Input.is_action_pressed("ui_left"):
-		# set to move left with button
-		motion.x = -SPEED
-		playerDirection = playerDirections.left
-		is_analogue_input = false
-	elif Input.is_action_pressed("ls_right"):
-		# set to move right with stick
-		motion.x = SPEED * Input.get_action_strength("ls_right")
-		playerDirection = playerDirections.right
-		is_analogue_input = true
-	elif Input.is_action_pressed("ls_left"):
-		# set to move left with stick
-		motion.x = -SPEED * Input.get_action_strength("ls_left")
-		playerDirection = playerDirections.left
-		is_analogue_input = true
+	if !disabled:
+		# apply gravity
+		motion.y += G
+				
+		if Input.is_action_pressed("ui_right"):
+			# set to move right with button
+			motion.x = SPEED
+			playerDirection = playerDirections.right
+			is_analogue_input = false
+		elif Input.is_action_pressed("ui_left"):
+			# set to move left with button
+			motion.x = -SPEED
+			playerDirection = playerDirections.left
+			is_analogue_input = false
+		elif Input.is_action_pressed("ls_right"):
+			# set to move right with stick
+			motion.x = SPEED * Input.get_action_strength("ls_right")
+			playerDirection = playerDirections.right
+			is_analogue_input = true
+		elif Input.is_action_pressed("ls_left"):
+			# set to move left with stick
+			motion.x = -SPEED * Input.get_action_strength("ls_left")
+			playerDirection = playerDirections.left
+			is_analogue_input = true
+		else:
+			# not moving left or right
+			motion.x = 0
+		
+		#if Input.is_action_pressed("ui_up"):
+		#	# fly mode
+		#	motion.y = -SPEED
+		
+		if Input.is_action_pressed("ui_jump") and is_on_floor():
+			jump()
+		
+		# process the motion of the player
+		handleMotion()
+		motion = move_and_slide(motion, UP)
 	else:
-		# not moving left or right
-		motion.x = 0
-	
-	#if Input.is_action_pressed("ui_up"):
-	#	# fly mode
-	#	motion.y = -SPEED
-	
-	if Input.is_action_pressed("ui_jump") and is_on_floor():
-		jump()
-	
-	# process the motion of the player
-	handleMotion()
-	motion = move_and_slide(motion, UP)
+		pass
 
 #func _on_colliion_with_body(body):
