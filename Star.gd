@@ -1,6 +1,6 @@
 extends Sprite
 
-#onready var world = get_parent()
+onready var world = get_parent()
 
 func _ready():
 	$Area2D.connect("body_entered", self, "hit")
@@ -12,6 +12,7 @@ func hit(object):
 		object.starCount += 1
 		#print(object.starCount)
 		visible = false
+		world.get_node("Player/FX_collect").play()
 		#$Area2D/CollisionShape2D.call_deferred("set_disabled", true)
 		queue_free()
 	else:
